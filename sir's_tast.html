@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>JS Validation</title>
+
+<script>
+
+function validate()
+{
+ var flag=true;
+
+ var name=document.getElementById("name").value;
+ var email=document.getElementById("email").value;
+ var password=document.getElementById("password").value;
+ var mobile=document.getElementById("mobile").value;
+ 
+
+ var err1=document.getElementById("err1");
+ var err2=document.getElementById("err2");
+ var err3=document.getElementById("err3");
+ var err4=document.getElementById("err4");
+
+ if(mobile.length==0)
+ {
+  err4.innerHTML="*Mobile number is required";
+  err4.style.color="red";
+  flag=false;
+ }
+ else if(isNaN(mobile))
+ {
+  err4.innerHTML="*Mobile number must be numeric";
+  err4.style.color="red";
+  flag=false;
+ }
+ else if(mobile.length!=10)
+ {
+  err4.innerHTML="*Mobile number must be 10 digit";
+  err4.style.color="red";
+  flag=false;
+ }
+ else
+  err4.innerHTML="";
+
+ if(password.length==0)
+ {
+  err3.innerHTML="*Password is required";
+  err3.style.color="red";
+  flag=false;
+ }
+ else if(password.length<=4 || password.length>=9)
+ {
+  err3.innerHTML="*Password must be 5-8 letter long";
+  err3.style.color="red";
+  flag=false;
+ }
+ else
+  err3.innerHTML="";
+
+ if(email.length==0)
+ {
+  err2.innerHTML="*Email is required";
+  err2.style.color="red";
+  flag=false;
+ }
+ else
+  err2.innerHTML="";   
+
+
+ if(name=="")
+ {
+  err1.innerHTML="*Name is required";
+  err1.style.color="red";
+  flag=false;
+ }
+ else
+  err1.innerHTML="";   
+
+ return flag;    
+}    
+
+</script>
+
+
+</head>
+<body>
+
+<h1>Register Here!!!</h1>    
+
+<form>
+
+<table cellspacing="5" cellpadding="5" >
+<tr>
+<td>Name</td>
+<td><input onkeyup="return validate()" type="text" id="name" /></td>
+<td id="err1" ></td>    
+</tr>
+<tr>
+<td>Email</td>
+<td><input onkeyup="return validate()" type="text"  id="email" /></td>
+<td id="err2" ></td>    
+</tr>
+<tr>
+<td>Password</td>
+<td><input onkeyup="return validate()" type="text"  id="password" /></td>
+<td id="err3" ></td>    
+</tr>
+<tr>
+<td>Mobile</td>
+<td><input onkeyup="return validate()" type="text"  id="mobile" /></td>
+<td id="err4" ></td>    
+</tr>
+<tr>
+<td><input onclick="return validate()" type="submit" /></td>    
+</tr>
+</table>    
+
+</form>
+
+</body>
+</html>
